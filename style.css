@@ -78,3 +78,23 @@
   font-size: 25px;
   gap: 10px;
 }
+
+.actor-con {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cast-con {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.actor-profile__img {
+  object-fit: cover;
+  width: 120px;
+  height: 140px;
+}
