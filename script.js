@@ -20,6 +20,8 @@ const constructUrl = (path) => {
 };
 
 // creating the url api link for the get the type of movies like (action , drama , ...so on)
+
+// bas nawi flimakan w listy filmakana law linka dainitawa 
 const constructGener = (genreId) => {
   return `${TMDB_BASE_URL}/discover/movie?api_key=${atob(
     "NTQyMDAzOTE4NzY5ZGY1MDA4M2ExM2M0MTViYmM2MDI="
@@ -45,6 +47,9 @@ const fetchMovie = async (movieId) => {
   const res = await fetch(url);
   return res.json();
 };
+
+
+// list y movies
 
 // You'll need to play with this function in order to add features and enhance the style.
 const renderMovies = (movies) => {
