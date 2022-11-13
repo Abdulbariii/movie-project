@@ -64,8 +64,19 @@ const renderMovies = (movies) => {
   });
 };
 
+const fetchCast = async (path) => {
+  const url = constructUrl(path);
+
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
+};
+
 // You'll need to play with this function in order to add features and enhance the style.
-const renderMovie = (movie) => {
+const renderMovie = async (movie) => {
+  console.log(movie);
+  const actors = await fetchCast(`movie/${movie.id}/credits`);
+
   CONTAINER.innerHTML = `
     <div class="row">
         <div class="col-md-4">
@@ -82,9 +93,11 @@ const renderMovie = (movie) => {
             <h3>Overview:</h3>
             <p id="movie-overview">${movie.overview}</p>
         </div>
-        </div>
+        </div class="">
             <h3>Actors:</h3>
-            <ul id="actors" class="list-unstyled"></ul>
+            <ul id="actors" class="list-unstyled">
+            ${actors.cast.map((actors) => `<li> ${actors.name}</li>`)}
+            </ul>
     </div>`;
 };
 
