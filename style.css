@@ -33,11 +33,14 @@
 #footer {
   background-color: rgba(57, 131, 131, 0.615);
   width: 100%;
-  height: 230px;
+  height: fit-content;
+
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   padding: 40px;
+  gap: 10px;
 }
 
 .con-genre {
@@ -69,6 +72,8 @@
 .social-con {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 5px;
   font-size: 20px;
 }
@@ -115,4 +120,23 @@
 
 .actor_name {
   font-size: 55px;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+
+.logo-con {
+  display: flex;
+  color: black;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  height: fit-content;
+}
+
+.logo-con:hover {
+  color: rgba(0, 0, 0, 0.833);
 }
