@@ -3,7 +3,7 @@
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
-const CONTAINER = document.querySelector(".container");
+const CONTAINER = document.querySelector(".container1");
 const genreContainer = document.querySelector(".con-genre");
 const genre_id = 12;
 // Don't touch this function please
@@ -57,7 +57,7 @@ const renderMovies = (movies) => {
     const movieDiv = document.createElement("div");
     movieDiv.innerHTML = " ";
     movieDiv.innerHTML = `
-        <img class="img-movie" src="${
+        <img class="img-movie"  src="${
           BACKDROP_BASE_URL + movie.backdrop_path
         }" alt="${movie.title} poster">
         <h3 class="movie-card__title">${movie.title}</h3>`;
