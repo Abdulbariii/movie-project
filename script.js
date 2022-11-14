@@ -2,9 +2,11 @@
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
+const PROFILE_MAIN_URL = "http://image.tmdb.org/t/p/w585";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const CONTAINER = document.querySelector(".container1");
 const genreContainer = document.querySelector(".con-genre");
+const getActorCon = document.getElementById("actor-con");
 const genre_id = 12;
 // Don't touch this function please
 const autorun = async () => {
@@ -21,7 +23,7 @@ const constructUrl = (path) => {
 
 // creating the url api link for the get the type of movies like (action , drama , ...so on)
 
-// bas nawi flimakan w listy filmakana law linka dainitawa 
+// bas nawi flimakan w listy filmakana law linka dainitawa
 const constructGener = (genreId) => {
   return `${TMDB_BASE_URL}/discover/movie?api_key=${atob(
     "NTQyMDAzOTE4NzY5ZGY1MDA4M2ExM2M0MTViYmM2MDI="
@@ -48,7 +50,6 @@ const fetchMovie = async (movieId) => {
   return res.json();
 };
 
-
 // list y movies
 
 // You'll need to play with this function in order to add features and enhance the style.
@@ -69,8 +70,47 @@ const renderMovies = (movies) => {
   });
 };
 
+//Getting actor list for a specific movie
+const fetchCast = async (path) => {
+  const url = constructUrl(path);
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  return data;
+};
+
 // You'll need to play with this function in order to add features and enhance the style.
-const renderMovie = (movie) => {
+const renderMovie = async (movie) => {
+  console.log(movie);
+
+  // the query for getting list actors(Cast) for a specific movie
+  const actors = await fetchCast(`movie/${movie.id}/credits`);
+  let cast = [];
+  for (let i = 0; i < 6; i++) {
+    cast.push(actors.cast[i]);
+  }
+
+  console.log(cast);
+  const conActors = document.createElement("ul");
+  conActors.classList = " list-unstyled cast-con";
+
+  cast.map((actor) => {
+    console.log(PROFILE_BASE_URL + actor.profile_path);
+    const conActor = document.createElement("li");
+    conActor.innerHTML = ` <img  class="actor-profile__img" src=${
+      PROFILE_BASE_URL + actor.profile_path
+    }>
+<p>
+
+${actor.name}</p>`;
+    conActor.addEventListener("click", function () {
+      CONTAINER.innerHTML = " ";
+      renderSingleActorPage(actor.id);
+    });
+
+    conActors.appendChild(conActor);
+  });
+
   CONTAINER.innerHTML = `
     <div class="row">
         <div class="col-md-4">
@@ -87,10 +127,12 @@ const renderMovie = (movie) => {
             <h3>Overview:</h3>
             <p id="movie-overview">${movie.overview}</p>
         </div>
-        </div>
+        </div class="actors-con">
             <h3>Actors:</h3>
-            <ul id="actors" class="list-unstyled"></ul>
+           
     </div>`;
+
+  CONTAINER.appendChild(conActors);
 };
 
 // render action,comedy,war ... movie type texts in the footer with
@@ -121,6 +163,36 @@ const fetchGener = async (gener) => {
   const data = await res.json();
   console.log(data);
   renderGenerInFooter(data);
+};
+
+//Fetching information about only one actor
+const fetchSingleActor = async (path) => {
+  const url = constructUrl(path);
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  return data;
+};
+
+fetchSingleActor("person/1356210");
+const renderSingleActorPage = async (actor_id) => {
+  const actorInformation = await fetchSingleActor(`person/${actor_id}`);
+  console.log(actorInformation.profile_path);
+  CONTAINER.innerHTML = `
+<div class="single-actor-con">
+<img class="single-actor-img" src=${
+    PROFILE_BASE_URL + actorInformation.profile_path
+  }
+}>
+
+<div class="single-actor-con__information>
+<h1 class="actor_name">Name: ${actorInformation.name}</h1>
+<p>Biography: ${actorInformation.biography}</p
+>
+
+</div>
+</div>
+  `;
 };
 
 fetchGener("genre/movie/list");
