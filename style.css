@@ -26,6 +26,8 @@
 
 .movie-card__title {
   font-size: 15px;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
 }
 #footer {
   background-color: rgba(57, 131, 131, 0.615);
