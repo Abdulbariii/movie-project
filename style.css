@@ -16,6 +16,8 @@
   height: 320px;
   border-radius: 10px;
   transition: all 0.3s;
+  box-shadow: 0 8px 8px -4px rgb(7, 110, 144);
+  margin-bottom: 10px;
 }
 
 .img-movie:hover {
