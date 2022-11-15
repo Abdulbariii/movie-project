@@ -12,7 +12,18 @@ const actorsFooter = document.getElementById("actors-footer");
 const homeNavbar = document.getElementById("home-navbar");
 const homeFooter = document.getElementById("home-footer");
 const dropdown_con = document.getElementById("dropdown-menu-con");
+const aboutNavbar = document.getElementById("about-navbar");
+const logoNavbar = document.getElementById("logo-navbar");
+const logoFooter = document.getElementById("logo-footer");
+logoNavbar.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  changeGenre(12);
+});
 
+logoFooter.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  changeGenre(12);
+});
 homeNavbar.addEventListener("click", function () {
   CONTAINER.innerHTML = " ";
   changeGenre(12);
@@ -31,11 +42,48 @@ actorsFooter.addEventListener("click", function () {
   CONTAINER.innerHTML = " ";
   renderActorLits();
 });
+
+aboutNavbar.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderAbout();
+});
 const genre_id = 12;
 // Don't touch this function please
 const autorun = async () => {
   const movies = await fetchMovies(12);
   renderMovies(movies.results);
+};
+
+//About section
+const renderAbout = () => {
+  CONTAINER.innerHTML = `
+<div class="flex flex-col about-con gap-10  ml-20">
+<h1 class="text-4xl font-bold">About</h1>
+<p class="text-2xl">Holly View is a movie website that provides best movies in full HD. Each movie has been classified upon different genres based on their content and each has its own list of actors along with details on each actor. We, a group of four fresh developers, wish to bring our designing ideas and coding comprehensions to life through the Holly View website. Enjoy it!</p>
+</div>
+
+<div class="flex flex-col mx-20 gap-10 items-start mb-20 justify-start">
+
+<h1 class="text-4xl font-bold">Team members</h1>
+          <a class="flex items-center gap-2" href="https://github.com/Abdulbariii">
+            <img class="w-20 h-20 object-cover" src="./github-logo.png" />
+            <p class="text-3xl font-bold">Abdulbari</p>
+          </a>
+
+          <a class="flex items-center gap-2" href="https://github.com/Nma-sh98">
+            <img class="w-20 h-20 object-cover" src="./github-logo.png" />
+            <p class="text-3xl font-bold">Nma</p>
+          </a>
+          <a class="flex items-center gap-2" href="https://github.com/shadmustafa">
+            <img class="w-20 h-20 object-cover" src="./github-logo.png" />
+            <p class="text-3xl font-bold">Shad</p>
+          </a>
+          <a class="flex items-center gap-2" href="https://github.com/MariaDaya">
+            <img class="w-20 h-20 object-cover" src="./github-logo.png" />
+            <p class="text-3xl font-bold">Maria</p>
+          </a>
+        </div>
+  `;
 };
 
 // Don't touch this function please
@@ -133,7 +181,6 @@ const fetchCast = async (path) => {
   return data;
 };
 
-
 // You'll need to play with this function in order to add features and enhance the style.
 const renderMovie = async (movie) => {
   console.log(movie);
@@ -147,7 +194,7 @@ const renderMovie = async (movie) => {
 
   console.log(cast);
   const conActors = document.createElement("ul");
-  
+
   conActors.classList = " list-unstyled cast-con";
 
   cast.map((actor) => {
@@ -164,12 +211,12 @@ ${actor.name}</p>`;
       CONTAINER.innerHTML = " ";
       renderSingleActorPage(actor.id);
     });
-//                       
+    //
     conActors.appendChild(conActor);
   });
 
   CONTAINER.innerHTML = `
-    <div class="row">
+    <div class="row gap-10">
 
         <div ">
              <img id="movie-backdrop" src=${
@@ -177,18 +224,20 @@ ${actor.name}</p>`;
              }>
         </div>
 
-        <div >
-            <h2 id="movie-title">${movie.title}</h2>
-            <p id="movie-release-date"><b>Release Date:</b> ${
+        <div class="flex flex-col gap-5">
+            <h2 id="movie-title" class="text-4xl">${movie.title}</h2>
+            <p id="movie-release-date "  class="text-xl"><b class="font-bold text-2xl">Release Date:</b> ${
               movie.release_date
             }</p>
-            <p id="movie-runtime"><b>Runtime:</b> ${movie.runtime} Minutes</p>
-            <h3>Overview:</h3>
-            <p id="movie-overview">${movie.overview}</p>
+            <p id="movie-runtime " class="text-xl"><b class="font-bold text-2xl">Runtime:</b> ${
+              movie.runtime
+            } Minutes</p>
+            <h3 class="font-bold text-2xl">Overview:</h3>
+            <p class="text-xl" id="movie-overview ">${movie.overview}</p>
         </div>
    </div>
         <div class="actors-con">
-        <h1> Actors </h1>
+        <h1 class="text-5xl"> Actors </h1>
      
            
     </div>`;
@@ -284,8 +333,8 @@ const renderActorLits = async () => {
 
   actors.results.map((actor) => {
     const conActor = document.createElement("div");
-    conActor.innerHTML = `<div class="bg-sky-900 rounded-xl hover:scale-2">
-  <img class="rounded-xl w-80 h-80 object-cover" src=${
+    conActor.innerHTML = `<div class="bg-indigo-800 mb-10 hover:scale-105 transition-all">
+  <img class=" w-80 h-80 object-cover" src=${
     PROFILE_BASE_URL + actor.profile_path
   }>
 

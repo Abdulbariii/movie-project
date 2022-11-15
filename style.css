@@ -42,8 +42,8 @@ body {
 }
 
 .movie-card__title {
-  font-size: 15px;
-  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
 #footer {
@@ -104,7 +104,7 @@ body {
   flex-direction: column;
   gap: 5px;
 
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 100px !important;
 }
@@ -222,5 +222,9 @@ body {
   width: 100%;
 }
 .actorname {
-  font-family: "Playfair Display", serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-con {
+  font-family: "Poppins", sans-serif;
 }
