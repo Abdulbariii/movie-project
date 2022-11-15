@@ -5,7 +5,9 @@
 body {
   margin: 0;
   padding: 0;
+background-image: linear-gradient(to bottom right,rgb(183, 181, 181) , rgb(154, 154, 200) , white);
 }
+
 
 #movie-backdrop {
   width: 100%;
@@ -91,12 +93,17 @@ body {
   display: flex;
   font-size: 25px;
   gap: 10px;
+  
 }
 
 .actors-con {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 100px !important;
 }
 
 .cast-con {
@@ -105,12 +112,16 @@ body {
   width: 100%;
   align-items: center;
   flex-wrap: wrap;
+   margin: auto;
+
 }
 
 .actor-profile__img {
   object-fit: cover;
   width: 120px;
   height: 140px;
+  border-radius: 25px;
+  box-shadow: 0 8px 8px -4px rgb(7, 110, 144);
 }
 
 .single-actor-con {
@@ -149,6 +160,7 @@ body {
 .logo-con:hover {
   color: rgba(0, 0, 0, 0.833);
 }
+
 
 .dropdown {
   position: relative;
@@ -191,4 +203,32 @@ body {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.row{
+
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+border-radius: 25px;
+height: 60vh;
+margin-bottom: 5%;
+margin-left: 5%;
+padding: 5%;
+}
+
+.row img{
+
+  width: 100%;
+  border-radius: 5px;
+
+}
+.actorname{
+  font-family: "Playfair Display", serif;
+
 }
