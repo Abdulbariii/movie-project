@@ -79,6 +79,7 @@ const fetchCast = async (path) => {
   return data;
 };
 
+
 // You'll need to play with this function in order to add features and enhance the style.
 const renderMovie = async (movie) => {
   console.log(movie);
@@ -92,33 +93,37 @@ const renderMovie = async (movie) => {
 
   console.log(cast);
   const conActors = document.createElement("ul");
+  
   conActors.classList = " list-unstyled cast-con";
 
   cast.map((actor) => {
     console.log(PROFILE_BASE_URL + actor.profile_path);
     const conActor = document.createElement("li");
-    conActor.innerHTML = ` <img  class="actor-profile__img" src=${
+    conActor.innerHTML = ` 
+    <img  class="actor-profile__img" src=${
       PROFILE_BASE_URL + actor.profile_path
     }>
-<p>
+<p class="actorname">
 
 ${actor.name}</p>`;
     conActor.addEventListener("click", function () {
       CONTAINER.innerHTML = " ";
       renderSingleActorPage(actor.id);
     });
-
+//                       
     conActors.appendChild(conActor);
   });
 
   CONTAINER.innerHTML = `
     <div class="row">
-        <div class="col-md-4">
+
+        <div ">
              <img id="movie-backdrop" src=${
                BACKDROP_BASE_URL + movie.backdrop_path
              }>
         </div>
-        <div class="col-md-8">
+
+        <div >
             <h2 id="movie-title">${movie.title}</h2>
             <p id="movie-release-date"><b>Release Date:</b> ${
               movie.release_date
@@ -127,8 +132,10 @@ ${actor.name}</p>`;
             <h3>Overview:</h3>
             <p id="movie-overview">${movie.overview}</p>
         </div>
-        </div class="actors-con">
-            <h3>Actors:</h3>
+   </div>
+        <div class="actors-con">
+        <h1> Actors </h1>
+     
            
     </div>`;
 
