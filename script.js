@@ -179,16 +179,32 @@ const renderSingleActorPage = async (actor_id) => {
   const actorInformation = await fetchSingleActor(`person/${actor_id}`);
   console.log(actorInformation.profile_path);
   CONTAINER.innerHTML = `
-<div class="single-actor-con">
-<img class="single-actor-img" src=${
+<div class="flex h-full w-full gap-52 px-12">
+<img class="w-[50rem] h-96 object-cover " src=${
     PROFILE_BASE_URL + actorInformation.profile_path
   }
 }>
 
-<div class="single-actor-con__information>
-<h1 class="actor_name">Name: ${actorInformation.name}</h1>
-<p>Biography: ${actorInformation.biography}</p
+<div class="w-[35rem] flex flex-col gap-10 pb-20">
+<h1 class="text-2xl w-[35rem]"> <span class="text-3xl font-bold">Name:</span> ${
+    actorInformation.name
+  }</h1>
+  <h1 class="text-2xl "> <span class="text-3xl font-bold">Gender: </span>${
+    actorInformation.gender === 1 ? "Female" : "Male"
+  }</h1>
+
+<h1 class="text-2xl "> <span class="text-3xl font-bold">popularity: </span>${
+    actorInformation.popularity
+  }</h1>
+
+
+
+
+<p class="text-sm gap-2 flex flex-col"> <span class="text-3xl font-bold">Biography: </span>${
+    actorInformation.biography
+  }</p
 >
+
 
 </div>
 </div>
