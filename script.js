@@ -23,6 +23,12 @@ const constructUrl = (path) => {
   )}`;
 };
 
+const constructUrlOfActorList = (path) => {
+  return `${TMDB_BASE_URL}/${path}?api_key=${atob(
+    "NTQyMDAzOTE4NzY5ZGY1MDA4M2ExM2M0MTViYmM2MDI="
+  )}&query=tom`;
+};
+
 // creating the url api link for the get the type of movies like (action , drama , ...so on)
 
 // bas nawi flimakan w listy filmakana law linka dainitawa
@@ -172,11 +178,10 @@ const fetchSingleActor = async (path) => {
   const url = constructUrl(path);
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+
   return data;
 };
 
-fetchSingleActor("person/1356210");
 const renderSingleActorPage = async (actor_id) => {
   const actorInformation = await fetchSingleActor(`person/${actor_id}`);
   console.log(actorInformation.profile_path);
@@ -218,8 +223,32 @@ actors.addEventListener("click", function () {
   renderActorLits();
 });
 
-const renderActorLits = () => {
-  CONTAINER.innerHTML = `<h1>Actor  List page</h1> `;
+const fetchActorList = async (path) => {
+  const url = constructUrlOfActorList(path);
+  console.log(url);
+  const res = await fetch(url);
+  const data = res.json();
+  return data;
+};
+
+const renderActorLits = async () => {
+  const actors = await fetchActorList("search/person");
+  console.log(actors);
+
+  actors.results.map((actor) => {
+    const conActor = document.createElement("div");
+    conActor.innerHTML = `<div class="bg-sky-900 rounded-xl hover:scale-2">
+  <img class="rounded-xl w-80 h-80 object-cover" src=${
+    PROFILE_BASE_URL + actor.profile_path
+  }>
+
+  <h1 class="text-2xl text-white py-2 px-2 ">${actor.name}</h1>
+  </div>`;
+    CONTAINER.appendChild(conActor);
+    conActor.addEventListener("click", function () {
+      renderSingleActorPage(actor.id);
+    });
+  });
 };
 
 fetchGener("genre/movie/list");
