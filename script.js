@@ -15,6 +15,7 @@ const dropdown_con = document.getElementById("dropdown-menu-con");
 const aboutNavbar = document.getElementById("about-navbar");
 const logoNavbar = document.getElementById("logo-navbar");
 const logoFooter = document.getElementById("logo-footer");
+const aboutFooter = document.getElementById("about-footer");
 logoNavbar.addEventListener("click", function () {
   CONTAINER.innerHTML = " ";
   changeGenre(12);
@@ -44,6 +45,11 @@ actorsFooter.addEventListener("click", function () {
 });
 
 aboutNavbar.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderAbout();
+});
+
+aboutFooter.addEventListener("click", function () {
   CONTAINER.innerHTML = " ";
   renderAbout();
 });
