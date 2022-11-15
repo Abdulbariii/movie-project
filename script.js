@@ -8,7 +8,29 @@ const CONTAINER = document.querySelector(".container1");
 const genreContainer = document.querySelector(".con-genre");
 const getActorCon = document.getElementById("actor-con");
 const actors = document.getElementById("actors-list");
+const actorsFooter = document.getElementById("actors-footer");
+const homeNavbar = document.getElementById("home-navbar");
+const homeFooter = document.getElementById("home-footer");
+const dropdown_con = document.getElementById("dropdown-menu-con");
 
+homeNavbar.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  changeGenre(12);
+});
+homeFooter.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  changeGenre(12);
+});
+
+actors.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderActorLits();
+});
+
+actorsFooter.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderActorLits();
+});
 const genre_id = 12;
 // Don't touch this function please
 const autorun = async () => {
@@ -57,6 +79,30 @@ const fetchMovie = async (movieId) => {
   const res = await fetch(url);
   return res.json();
 };
+
+//genres in navbar
+const renderGenreInNavbar = (genres) => {
+  console.log(genres);
+  genres.genres.map((genre) => {
+    console.log(genre.name);
+    const liGenre = document.createElement("a");
+    liGenre.innerHTML = `${genre.name}`;
+    liGenre.addEventListener("click", function () {
+      changeGenre(genre.id);
+    });
+    dropdown_con.appendChild(liGenre);
+  });
+};
+
+const fetchGenerNavbar = async (gener) => {
+  const url = constructUrl(gener);
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  renderGenreInNavbar(data);
+};
+
+fetchGenerNavbar("genre/movie/list");
 
 // list y movies
 
@@ -146,7 +192,6 @@ ${actor.name}</p>`;
 // render action,comedy,war ... movie type texts in the footer with
 //giving them functionaility to it by calling changeGenre function
 const renderGenerInFooter = (genres) => {
-  console.log(genres);
   genres.genres.map((genre) => {
     console.log(genre.name);
     const liGenre = document.createElement("li");
@@ -217,11 +262,6 @@ const renderSingleActorPage = async (actor_id) => {
 
   `;
 };
-
-actors.addEventListener("click", function () {
-  CONTAINER.innerHTML = " ";
-  renderActorLits();
-});
 
 const fetchActorList = async (path) => {
   const url = constructUrlOfActorList(path);
