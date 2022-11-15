@@ -12,10 +12,12 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Movie</title>
 
@@ -23,71 +25,101 @@
   </head>
 
   <body>
-    
+    <!-- navbar -->
 
-   <!-- navbar -->
+    <nav class="h-20 mb-32 bg-sky-800">
+      <div
+        class="containerl px-10 bg-sky-800 flex flex-wrap justify-between items-center mx-auto"
+      >
+        <a href="#" class="flex items-center">
+          <img src="./film.png" class="mr-3 h-6 sm:h-10" alt="Flowbite Logo" />
+          <span
+            class="self-center text-xl font-semibold whitespace-nowrap text-white text-4xl"
+            >RE:MOVIE</span
+          >
+        </a>
+        <button
+          data-collapse-toggle="mobile-menu"
+          type="button"
+          class="inline-flex justify-center items-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-500"
+          aria-controls="mobile-menu-2"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <ul
+            class="flex gap-10 items-center flex-col p-4 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-xl"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
 
-
-
-
-
-   <nav class=" h-20 mb-32  bg-sky-800  ">
-    <div class="containerl px-10 bg-sky-800   flex flex-wrap  justify-between items-center mx-auto">
-      <a href="#" class="flex items-center">
-          <img src="./film.png" class="mr-3 h-6 sm:h-10" alt="Flowbite Logo">
-          <span class="self-center text-xl font-semibold whitespace-nowrap text-white text-4xl">RE:MOVIE</span>
-      </a>
-      <button data-collapse-toggle="mobile-menu" type="button" class="inline-flex  justify-center items-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-500" aria-controls="mobile-menu-2" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-      </button>
-      <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
-        <ul class="flex flex-col p-4 mt-4 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-          <li>
-            <a href="#" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent text-xl" aria-current="page">Home</a>
-          </li>
-
-          <li class="li1 li11">
-            <div class="dropdown">
-
-             <div class="text-xl">
-                 
-                <a id="link"  class="dropbtn text-white mt-10" href="#">Genres&#x25BC; </a> 
-                <div class="dropdown-content">
+            <li class="li1 li11">
+              <div class="dropdown">
+                <div class="text-xl">
+                  <a id="link" class="dropbtn text-white mt-10" href="#"
+                    >Genres&#x25BC;
+                  </a>
+                  <div class="dropdown-content">
                     <a href="link1.html">Float layout with side nav</a>
                     <a href="link2.html">Flexbox layout with side nav</a>
                     <a href="link3.html">Gride layout with side nav</a>
+                  </div>
                 </div>
+              </div>
+            </li>
 
-                </div>
-        </li>
-        
-          <li class="text-xl ">
-            <a href="#" class="block py-2 text-white pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">ACTORS</a>
-          </li>
-          <li class="text-xl">
-            <a href="#" class="block py-2 text-white pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">ABOUT</a>
-          </li>
-       
-        </ul>
+            <li
+              class="text-xl text-center flex items-center justify-center"
+              id="actors-list"
+            >
+              <a
+                href="#"
+                class="block py-2 text-white text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >ACTORS</a
+              >
+            </li>
+            <li class="text-xl" id="about">
+              <a
+                href="#"
+                class="block py-2 text-white text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >ABOUT</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  
-  
-<!--   
+    </nav>
+
+    <!--   
   <div class="grid grid-cols-3 gap-4 content-around ">
     <div>01</div>
     <div>01</div>
     <div>09</div>
   </div> -->
 
- 
-   
-
- 
-
-    <div class="container1 grid grid-cols-3 gap-4 place-items-center  "></div>
+    <div
+      class="container1 grid grid-cols-3 gap-4 place-items-start px-10"
+    ></div>
 
     <footer id="footer" class="bg-sky-800 text-white">
       <div class="footer-header">RE:MOVIE</div>
@@ -95,7 +127,7 @@
         <div>
           <p>Home</p>
           <p>About</p>
-          <p>Actors</p>
+          <p id="actors-navbar">Actors</p>
         </div>
       </div>
       <div>

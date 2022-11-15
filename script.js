@@ -7,6 +7,8 @@ const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const CONTAINER = document.querySelector(".container1");
 const genreContainer = document.querySelector(".con-genre");
 const getActorCon = document.getElementById("actor-con");
+const actors = document.getElementById("actors-list");
+
 const genre_id = 12;
 // Don't touch this function please
 const autorun = async () => {
@@ -179,14 +181,14 @@ const renderSingleActorPage = async (actor_id) => {
   const actorInformation = await fetchSingleActor(`person/${actor_id}`);
   console.log(actorInformation.profile_path);
   CONTAINER.innerHTML = `
-<div class="flex h-full w-full gap-52 px-12">
-<img class="w-[50rem] h-96 object-cover " src=${
+
+<img class=" h-96 object-cover " src=${
     PROFILE_BASE_URL + actorInformation.profile_path
   }
 }>
 
-<div class="w-[35rem] flex flex-col gap-10 pb-20">
-<h1 class="text-2xl w-[35rem]"> <span class="text-3xl font-bold">Name:</span> ${
+<div class=" flex flex-col gap-10 pb-20">
+<h1 class="text-2xl"> <span class="text-3xl font-bold">Name:</span> ${
     actorInformation.name
   }</h1>
   <h1 class="text-2xl "> <span class="text-3xl font-bold">Gender: </span>${
@@ -207,8 +209,17 @@ const renderSingleActorPage = async (actor_id) => {
 
 
 </div>
-</div>
+
   `;
+};
+
+actors.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderActorLits();
+});
+
+const renderActorLits = () => {
+  CONTAINER.innerHTML = `<h1>Actor  List page</h1> `;
 };
 
 fetchGener("genre/movie/list");
